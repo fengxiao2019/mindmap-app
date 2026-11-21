@@ -1,0 +1,108 @@
+{
+  "format": "mindmap",
+  "version": 1,
+  "title": "全字段示例",
+  "intro": "覆盖 kicker / detail / facts / color / side / sources，以及会被清理的内容。",
+  "sources": [
+    {
+      "title": "带链接的参考",
+      "url": "https://example.com"
+    },
+    {
+      "title": "纯文字参考",
+      "url": ""
+    },
+    {
+      "title": "危险链接会被去掉链接",
+      "url": "javascript:alert(1)"
+    },
+    {
+      "url": "https://only-url.example.com"
+    }
+  ],
+  "unknownTopLevelField": "应被忽略",
+  "tree": {
+    "title": "全字段示例",
+    "kicker": "ROOT KICKER",
+    "detail": "根节点副标题",
+    "children": [
+      {
+        "id": "left-one",
+        "side": "left",
+        "color": "#c0495a",
+        "kicker": "LEFT",
+        "title": "强制在左边（红色）",
+        "detail": "side=left, color=#c0495a",
+        "children": [
+          {
+            "id": "dup",
+            "title": "重复 id（第一个）"
+          },
+          {
+            "id": "dup",
+            "title": "重复 id（第二个，应被改名）"
+          },
+          {
+            "id": "bad id!",
+            "title": "非法 id（应被改名）"
+          }
+        ]
+      },
+      {
+        "id": "right-one",
+        "side": "right",
+        "title": "强制在右边",
+        "kicker": "RIGHT",
+        "detail": "side=right",
+        "facts": [
+          {
+            "label": "要点一",
+            "value": "值一"
+          },
+          {
+            "label": "要点二",
+            "value": "值二"
+          },
+          {
+            "label": "缺少 value",
+            "value": ""
+          },
+          {
+            "label": "",
+            "value": "缺少 label"
+          }
+        ],
+        "children": [
+          {
+            "title": "有 facts 的叶子",
+            "facts": [
+              {
+                "label": "算法",
+                "value": "AES-256"
+              },
+              {
+                "label": "模式",
+                "value": "GCM"
+              }
+            ],
+            "ignoredField": 123
+          }
+        ]
+      },
+      {
+        "title": "未指定 side（自动分配）",
+        "children": [
+          {
+            "title": "子 1"
+          },
+          {
+            "title": "子 2"
+          }
+        ]
+      },
+      {
+        "title": "未指定 side（自动分配）2"
+      }
+    ]
+  }
+}

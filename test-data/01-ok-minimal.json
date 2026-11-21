@@ -1,0 +1,23 @@
+{
+  "title": "最小示例",
+  "intro": "只有标题的主题。",
+  "tree": {
+    "title": "最小示例",
+    "children": [
+      {
+        "title": "分支 A",
+        "children": [
+          {
+            "title": "叶子 A1"
+          },
+          {
+            "title": "叶子 A2"
+          }
+        ]
+      },
+      {
+        "title": "分支 B"
+      }
+    ]
+  }
+}

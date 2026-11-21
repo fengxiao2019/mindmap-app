@@ -1,0 +1,5 @@
+node_modules
+dist
+.DS_Store
+# 5 MB on purpose (tests the import size limit); regenerate locally, do not commit
+test-data/bad-08-over-5MB.json

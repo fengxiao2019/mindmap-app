@@ -1,0 +1,24 @@
+{
+  "title": "<img src=x onerror=alert(1)> 特殊字符",
+  "intro": "HTML、引号、emoji、超长标题、首尾空白都应原样显示成文字，不执行。",
+  "tree": {
+    "title": "  根节点（首尾空白）  ",
+    "children": [
+      {
+        "title": "<script>alert('xss')</script>",
+        "detail": "<b>不应该变粗</b> & \"引号\" 'single'"
+      },
+      {
+        "title": "Emoji 🚀🔐 与 中英混排 mixed text",
+        "detail": "表情和组合字符：👨‍👩‍👧‍👦 é ñ"
+      },
+      {
+        "title": "这是一个非常非常非常长的标题，用来测试节点换行、布局高度以及导出图片时的文字折行是否正常工作，不应该撑破节点或者和邻居重叠",
+        "detail": "同样地，这是一段很长的副标题。很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，很长的说明文字，"
+      },
+      {
+        "title": "AVeryLongEnglishWordWithoutSpacesToTestWrappingBehaviourInNodesAndImageExport_1234567890_abcdefghijklmnopqrstuvwxyz"
+      }
+    ]
+  }
+}

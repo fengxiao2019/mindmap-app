@@ -1,0 +1,12 @@
+{
+  "title": "children 不是数组",
+  "tree": {
+    "title": "根",
+    "children": [
+      {
+        "title": "坏节点",
+        "children": "我应该是数组"
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#148fa0">
+  <title data-i18n="app.name">学习地图</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <!-- A real <link>, not a JS import: the browser waits for the CSS before the first paint, so the page never flashes unstyled. -->
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <header class="menubar" id="menubar" role="menubar" aria-label="菜单栏" data-i18n-attr="aria-label:menubar.aria">
+    <button type="button" class="mb-icon" id="sidebar-expand" aria-label="展开侧边栏" title="展开侧边栏" data-i18n-attr="aria-label:sidebar.expand;title:sidebar.expand" aria-expanded="false" aria-controls="sidebar"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M7.5 3.5 12 8l-4.5 4.5M3 3.5 7.5 8 3 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <span class="mb-brand" data-i18n="app.name">学习地图</span>
+    <div class="mb-menu">
+      <button type="button" class="mb-trigger" id="trigger-file" role="menuitem" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-file" data-i18n="menu.file">文件</button>
+      <div class="mb-panel" id="menu-file" role="menu" aria-labelledby="trigger-file" hidden>
+        <button type="button" role="menuitem" data-action="import" data-i18n="file.import">导入 JSON…</button>
+        <button type="button" role="menuitem" data-action="template" data-i18n="file.template">下载 JSON 模板</button>
+        <hr role="separator">
+        <button type="button" role="menuitem" class="danger" data-action="delete" data-i18n="file.delete">删除当前主题…</button>
+      </div>
+    </div>
+    <div class="mb-menu">
+      <button type="button" class="mb-trigger" id="trigger-export" role="menuitem" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-export" data-i18n="menu.export">导出</button>
+      <div class="mb-panel" id="menu-export" role="menu" aria-labelledby="trigger-export" hidden>
+        <button type="button" role="menuitem" data-action="export-json" data-i18n="export.json">导出为 JSON</button>
+        <button type="button" role="menuitem" data-action="export-md" data-i18n="export.md">导出为 Markdown</button>
+        <hr role="separator">
+        <button type="button" role="menuitem" data-action="copy-md" data-i18n="export.copyMd">复制 Markdown</button>
+      </div>
+    </div>
+    <div class="mb-menu">
+      <button type="button" class="mb-trigger" id="trigger-view" role="menuitem" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-view" data-i18n="menu.view">视图</button>
+      <div class="mb-panel" id="menu-view" role="menu" aria-labelledby="trigger-view" hidden>
+        <button type="button" role="menuitem" data-action="expand" data-i18n="view.expand">全部展开</button>
+        <button type="button" role="menuitem" data-action="collapse" data-i18n="view.collapse">全部收起</button>
+        <hr role="separator">
+        <button type="button" role="menuitem" data-action="fit" data-i18n="view.fit">适应画面</button>
+        <button type="button" role="menuitem" data-action="zoom-in" data-i18n="view.zoomIn">放大</button>
+        <button type="button" role="menuitem" data-action="zoom-out" data-i18n="view.zoomOut">缩小</button>
+        <hr role="separator">
+        <button type="button" role="menuitemcheckbox" aria-checked="true" data-action="auto-detail" id="item-auto-detail" title="点击节点时自动打开详情面板" data-i18n="view.autoDetail" data-i18n-attr="title:view.autoDetail.tip">自动详情</button>
+        <button type="button" role="menuitem" data-action="show-detail" title="打开选中节点的详情面板" data-i18n="view.showDetail" data-i18n-attr="title:view.showDetail.tip">查看详情</button>
+        <hr role="separator">
+        <button type="button" role="menuitemcheckbox" aria-checked="false" data-action="sidebar" id="item-sidebar" data-i18n="view.sidebar">侧边栏</button>
+      </div>
+    </div>
+    <span class="mb-title" id="topbar-title"></span>
+    <div class="lang-switch" role="group" aria-label="语言" data-i18n-attr="aria-label:lang.aria">
+      <button type="button" data-lang="zh" lang="zh" aria-pressed="true" title="切换到中文">中</button>
+      <button type="button" data-lang="en" lang="en" aria-pressed="false" title="Switch to English">EN</button>
+    </div>
+  </header>
+  <input type="file" id="import-file" accept=".json,application/json" multiple hidden>
+  <main>
+    <aside class="sidebar" id="sidebar" aria-label="主题导航" data-i18n-attr="aria-label:sidebar.aria" hidden>
+      <header class="side-head">
+        <span class="side-label" id="topics-label" data-i18n="sidebar.topics">主题</span>
+        <button type="button" class="mb-icon" id="sidebar-collapse" aria-label="收起侧边栏" title="收起侧边栏" data-i18n-attr="aria-label:sidebar.collapse;title:sidebar.collapse" aria-controls="sidebar"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8.5 3.5 4 8l4.5 4.5M13 3.5 8.5 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </header>
+      <section class="side-section topics-wrap" aria-label="主题" data-i18n-attr="aria-label:sidebar.topics">
+        <div id="topics"></div>
+      </section>
+      <footer class="side-foot" id="side-foot"></footer>
+    </aside>
+    <section class="map" id="map" aria-label="知识脑图" data-i18n-attr="aria-label:map.aria">
+      <div class="ui graph-toolbar" aria-label="脑图缩放控制" data-i18n-attr="aria-label:map.zoomAria">
+        <button type="button" data-zoom="out" aria-label="缩小" data-i18n-attr="aria-label:map.zoomOut">−</button>
+        <button type="button" class="zoom-level" data-zoom="reset" aria-label="适应画面" title="适应画面" data-i18n-attr="aria-label:map.fit;title:map.fit">100%</button>
+        <button type="button" data-zoom="in" aria-label="放大" data-i18n-attr="aria-label:map.zoomIn">＋</button>
+      </div>
+      <div class="drop-zone" id="drop-zone"></div>
+      <div class="ui drag-banner" id="drag-banner" hidden></div>
+      <div class="graph-viewport">
+        <div class="graph-world">
+          <svg class="graph-lines" aria-hidden="true"></svg>
+          <div class="graph-nodes"></div>
+        </div>
+      </div>
+      <span class="graph-hint" data-i18n="map.hint">拖动画布平移 · 滚轮平移 · Ctrl/⌘ + 滚轮缩放 · 点击节点展开 · 右键节点插入 / 重命名 / 删除 / 导出图片 · 拖动一级分支可换到另一侧 · 可拖入 JSON 文件导入</span>
+    </section>
+    <aside class="detail" id="detail" aria-label="节点详情" data-i18n-attr="aria-label:detail.aria" hidden>
+      <header class="side-head">
+        <span class="side-label" data-i18n="detail.label">详情</span>
+        <button type="button" class="mb-icon" id="detail-close" aria-label="关闭详情" title="关闭详情（Esc）" data-i18n-attr="aria-label:detail.close;title:detail.closeTip"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+      </header>
+      <div class="detail-body" id="detail-body"></div>
+    </aside>
+    <div class="toast" id="toast" role="status" hidden></div>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "title": "恰好 8 层（上限）",
+  "intro": "根节点往下正好 8 层，应当可以导入。",
+  "tree": {
+    "title": "根节点",
+    "children": [
+      {
+        "title": "层级 1",
+        "children": [
+          {
+            "title": "层级 2",
+            "children": [
+              {
+                "title": "层级 3",
+                "children": [
+                  {
+                    "title": "层级 4",
+                    "children": [
+                      {
+                        "title": "层级 5",
+                        "children": [
+                          {
+                            "title": "层级 6",
+                            "children": [
+                              {
+                                "title": "层级 7",
+                                "children": [
+                                  {
+                                    "title": "层级 8"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

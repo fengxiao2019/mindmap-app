@@ -1,0 +1,68 @@
+{
+  "title": "HTTP Basics",
+  "intro": "A small English topic for testing import.",
+  "sources": [
+    {
+      "title": "MDN: HTTP",
+      "url": "https://developer.mozilla.org/docs/Web/HTTP"
+    }
+  ],
+  "tree": {
+    "title": "HTTP Basics",
+    "detail": "How the web talks",
+    "children": [
+      {
+        "title": "Requests",
+        "detail": "What the client sends",
+        "children": [
+          {
+            "title": "Methods",
+            "detail": "GET, POST, PUT, DELETE",
+            "facts": [
+              {
+                "label": "Safe",
+                "value": "GET, HEAD"
+              },
+              {
+                "label": "Idempotent",
+                "value": "GET, PUT, DELETE"
+              }
+            ]
+          },
+          {
+            "title": "Headers"
+          },
+          {
+            "title": "Body"
+          }
+        ]
+      },
+      {
+        "title": "Responses",
+        "children": [
+          {
+            "title": "Status codes",
+            "detail": "2xx ok, 3xx redirect, 4xx client error, 5xx server error"
+          },
+          {
+            "title": "Caching"
+          }
+        ]
+      },
+      {
+        "title": "Security",
+        "children": [
+          {
+            "title": "HTTPS"
+          },
+          {
+            "title": "CORS"
+          },
+          {
+            "title": "Cookies"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "title": "9 层，超过上限",
+  "tree": {
+    "title": "根节点",
+    "children": [
+      {
+        "title": "层级 1",
+        "children": [
+          {
+            "title": "层级 2",
+            "children": [
+              {
+                "title": "层级 3",
+                "children": [
+                  {
+                    "title": "层级 4",
+                    "children": [
+                      {
+                        "title": "层级 5",
+                        "children": [
+                          {
+                            "title": "层级 6",
+                            "children": [
+                              {
+                                "title": "层级 7",
+                                "children": [
+                                  {
+                                    "title": "层级 8",
+                                    "children": [
+                                      {
+                                        "title": "层级 9"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
