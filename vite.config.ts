@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["icon.svg"],
+      includeAssets: ["icon.svg", "apple-touch-icon.png"],
       workbox: {
         // Font slices are fetched on demand (CJK is split into ~100 files); cache each one on first use
         // instead of precaching all ~7 MB, so the app still looks the same offline.
@@ -16,7 +16,7 @@ export default defineConfig({
         ]
       },
       manifest: {
-        name: "学习地图",
+        name: "学习地图 · Learning Map",
         short_name: "学习地图",
         description: "导入 JSON，把每个学习主题变成可展开的知识脑图",
         lang: "zh-CN",
@@ -25,7 +25,12 @@ export default defineConfig({
         scope: ".",
         background_color: "#edf0eb",
         theme_color: "#148fa0",
-        icons: [{ src: "icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" }]
+        icons: [
+          { src: "icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+          { src: "icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+          { src: "icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+          { src: "icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" }
+        ]
       }
     })
   ],
