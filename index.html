@@ -9,6 +9,9 @@
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <!-- A real <link>, not a JS import: the browser waits for the CSS before the first paint, so the page never flashes unstyled. -->
   <link rel="stylesheet" href="/src/styles.css">
+  <!-- Chinese font: loaded without blocking rendering (media=print until it arrives). Pinned version, served by jsDelivr;
+       the service worker caches it, and the page falls back to the system CJK font if it is slow or unreachable. -->
+  <link id="cjk-font" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/noto-sans-sc@5.3.1/wght.css" media="print" onload="this.media='all'" crossorigin="anonymous">
 </head>
 <body>
   <header class="menubar" id="menubar" role="menubar" aria-label="菜单栏" data-i18n-attr="aria-label:menubar.aria">

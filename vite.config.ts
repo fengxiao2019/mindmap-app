@@ -12,7 +12,9 @@ export default defineConfig({
         // Font slices are fetched on demand (CJK is split into ~100 files); cache each one on first use
         // instead of precaching all ~7 MB, so the app still looks the same offline.
         runtimeCaching: [
-          { urlPattern: /\.woff2$/, handler: "CacheFirst", options: { cacheName: "fonts", expiration: { maxEntries: 150 } } }
+          // Same-origin Latin fonts and the CJK font slices + stylesheet from jsDelivr (versions are pinned in the URL).
+          { urlPattern: /\.woff2$/, handler: "CacheFirst", options: { cacheName: "fonts", expiration: { maxEntries: 150 } } },
+          { urlPattern: /^https:\/\/cdn\.jsdelivr\.net\/.*\.css$/, handler: "CacheFirst", options: { cacheName: "fonts-css", expiration: { maxEntries: 5 } } }
         ]
       },
       manifest: {

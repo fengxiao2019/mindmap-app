@@ -1,6 +1,6 @@
 import { renderSubtreePng } from "./graph/exportImage";
 import { type Lang, applyStaticTranslations, getLang, onLangChange, setLang, t } from "./i18n";
-import { loadFonts, treeText } from "./graph/fonts";
+import { firstPaintFontWait, loadFonts, treeText } from "./graph/fonts";
 import { createGraph } from "./graph/graph";
 import { SAMPLE_ID, defaultLibraryTopic, loadActiveId, loadLibrary, refreshBuiltIn, saveActiveId, saveLibrary } from "./model/library";
 import { toMarkdown } from "./model/markdown";
@@ -255,8 +255,9 @@ export function createApp(): void {
     }
   });
 
-  // First render waits (briefly) for the web fonts, so nodes are measured once with their final font.
+  // First render: on a cold start never wait for fonts (the system font is shown, the graph re-measures when the
+  // web font arrives); once they are cached, wait a moment so the nodes are measured once with the final font.
   const first = loadActiveId();
   const firstTopic = topics.find(x => x.id === first) ?? topics[0];
-  void loadFonts(`${firstTopic ? treeText(firstTopic.tree) : ""}${document.body.textContent ?? ""}`).then(() => loadTopic(first));
+  void loadFonts(`${firstTopic ? treeText(firstTopic.tree) : ""}${document.body.textContent ?? ""}`, firstPaintFontWait()).then(() => loadTopic(first));
 }

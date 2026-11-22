@@ -99,7 +99,7 @@ function roundRectPath(ctx: CanvasRenderingContext2D, x: number, y: number, w: n
 export async function renderSubtreePng(spec: ExportSpec): Promise<Blob | null> {
   const probe = document.createElement("canvas").getContext("2d");
   if (!probe) return null;
-  await loadFonts(treeText(spec.root)); // measuring with a fallback font would make the picture's boxes the wrong size
+  await loadFonts(treeText(spec.root), 5000); // measuring with a fallback font would make the picture's boxes the wrong size
 
   const expanded = new Set<string>();
   const mark = (node: MindNode): void => {

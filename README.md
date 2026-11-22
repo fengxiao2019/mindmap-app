@@ -19,7 +19,7 @@ npm run preview    # 预览打包结果（含 Service Worker）
 | `src/types.ts` | 数据类型：`MindNode`、`Topic`、`TopicDocument` |
 | `src/data/sample.ts`、`sample.en.ts` | 内置示例主题（网络安全学习地图，中 / 英两个版本，节点 id 一致） |
 | `src/i18n.ts`、`src/locales/` | 多语言（中文 / English）：`t(key)`、静态 HTML 的 `data-i18n`、语言切换 |
-| `src/graph/fonts.ts` | 字体栈与加载（自托管的 Inter / 思源黑体 / JetBrains Mono） |
+| `src/graph/fonts.ts` | 字体栈与加载（Inter、JetBrains Mono 自托管；思源黑体从 jsDelivr 异步加载，不挡首屏，失败时退回系统字体） |
 | `src/graph/exportImage.ts` | 右键「导出为图片」：以所选节点为根画成 PNG |
 | `test-data/` | 手工导入测试文件：`*-ok-*.json` 应成功，`bad-*.json` 应被拒绝 |
 | `src/model/topic.ts` | JSON 校验与规范化、限制、JSON 模板 |
