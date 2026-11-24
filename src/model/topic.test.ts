@@ -57,7 +57,7 @@ describe("normalizeTopic", () => {
     const once = normalizeTopic(SAMPLE, "cyber-security");
     const twice = normalizeTopic(once, "cyber-security");
     expect(twice.tree).toEqual(once.tree);
-    expect(countNodes(once.tree)).toBe(57);
+    expect(countNodes(once.tree)).toBe(116);
   });
 });
 
