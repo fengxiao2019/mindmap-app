@@ -287,6 +287,7 @@ main { display: flex; flex: 1 1 auto; min-height: 0; }
 .facts > div { display: grid; grid-template-columns: 84px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid #dbe3df; font-size: 13px; line-height: 1.55; }
 .facts dt { color: #718087; font-weight: 700; }
 .facts dd { margin: 0; }
+.facts dd a { color: var(--cyan); overflow-wrap: anywhere; }
 .detail-sub { margin-top: 20px; }
 .detail-empty { margin: 16px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
 .detail-empty code { padding: 1px 4px; border-radius: 3px; background: #e6eeeb; font-size: 12px; }

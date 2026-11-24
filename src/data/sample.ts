@@ -8,7 +8,7 @@ const sampleTree: MindNode = {
       children: [
         { id: "acct-password", title: "密码强度与暴力破解", detail: "拉高攻击者所需的时间，同时在安全与好用之间取得平衡", facts: [{ label: "用户名与密码", value: "两种证明你有权访问账号的方式；理论上只有你能同时给出有效的用户名和密码" }, { label: "字典攻击与暴力破解", value: "攻击者拿很长的候选密码列表逐个去试" }, { label: "密码空间", value: "4 位数字只有 10×10×10×10 = 10,000 种，几毫秒就能穷举；4 个大小写字母是 52⁴，超过 700 万种；再加上数字和标点超过 7,800 万种，穷举明显更慢" }, { label: "核心", value: "只要拉高攻击者所需的时间，他就越没有时间破解你的密码" }, { label: "权衡", value: "更长更复杂的密码更难输入、更难记，安全与可用性之间要取舍；越安全的服务可能越不好用" }] },
         { id: "acct-nist", title: "NIST 密码建议", detail: "美国国家标准与技术研究院给出的账号保护建议（讲义为意译）", facts: [{ label: "长度", value: "记忆型秘密（密码）至少 8 个字符" }, { label: "字符", value: "校验方应允许所有可打印的 ASCII 字符和 Unicode 符号，长度可达 64 个字符" }, { label: "对照黑名单", value: "校验方应把候选密码与字典词、重复序列、已泄露的密码列表和与上下文相关的词做比对" }, { label: "密码提示", value: "不应让未认证的人看到密码提示" }, { label: "定期更换", value: "不应要求定期更换密码" }, { label: "失败次数", value: "应限制认证失败的次数，并锁定潜在的攻击者" }] },
-        { id: "auth", title: "认证与授权", detail: "身份、权限与最小权限", children: [
+        { id: "auth", title: "认证与授权", detail: "身份、权限与最小权限", facts: [{ label: "参考视频", value: "https://www.youtube.com/watch?v=iX8g4LqF8p8" }], children: [
           { id: "mfa", title: "多因素认证（MFA）：密码 + 验证器 / 硬件密钥", detail: "2FA / MFA：同时要求多种互不相同的证明", facts: [{ label: "知识", value: "只有你知道的东西" }, { label: "持有", value: "只有授权用户才持有的物品或设备" }, { label: "固有", value: "只有你本人才能提供的因素，比如指纹、面容或其他生物特征" }] },
           { id: "rbac", title: "RBAC、ABAC 与最小权限" },
           { id: "access", title: "水平越权、垂直越权" },

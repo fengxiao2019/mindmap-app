@@ -1,6 +1,6 @@
 import { t } from "../i18n";
 import type { Graph, NodeInfo } from "../graph/graph";
-import { $, closest, esc } from "../util";
+import { $, closest, esc, linkOnly } from "../util";
 
 /** Right-hand panel with the selected node's explanation, key facts and sub-topics. */
 export function createDetail(graph: Graph) {
@@ -14,7 +14,11 @@ export function createDetail(graph: Graph) {
     if (path.length) parts.push(`<p class="detail-path">${path.map(p => esc(p.title)).join(" › ")}</p>`);
     if (node.detail) parts.push(`<p class="detail-text">${esc(node.detail)}</p>`);
     if (node.facts?.length) {
-      parts.push(`<dl class="facts">${node.facts.map(f => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd></div>`).join("")}</dl>`);
+      const value = (text: string): string => {
+        const href = linkOnly(text);
+        return href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(text)}</a>` : esc(text);
+      };
+      parts.push(`<dl class="facts">${node.facts.map(f => `<div><dt>${esc(f.label)}</dt><dd>${value(f.value)}</dd></div>`).join("")}</dl>`);
     }
     if (children.length) {
       parts.push(`<p class="side-label detail-sub">${esc(t("detail.contains", { n: children.length }))}</p><div class="outline">`);
